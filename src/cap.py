@@ -119,7 +119,7 @@ class Cap:
 				bl=len(g)
 				mg=g
 		img=Image.new("RGB",(img.width,img.height))
-		if (mg==None or len(mg)<self.opts["min_pixel_group_size"]):
+		if (mg is None or len(mg)<self.opts["min_pixel_group_size"]):
 			img=cv2.cvtColor(numpy.array(img),cv2.COLOR_RGB2BGR)
 			h,w,_=img.shape
 			img=cv2.resize(img,(w*self.opts["hand_image_scale_factor"],h*self.opts["hand_image_scale_factor"]))
@@ -151,7 +151,7 @@ class Cap:
 		img=Image.fromarray(img)
 		r_img=cv2.resize(r_img,(w,h))
 		data=list(img.getdata())
-		if (self.last_img==None):
+		if (self.last_img is None):
 			self.last_img=img
 			return r_img,0
 		l_data=list(self.last_img.getdata())
